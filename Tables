@@ -1,0 +1,82 @@
+CREATE TABLE Customers (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DateOfBirth DATE,
+    Email VARCHAR(100),
+    Phone VARCHAR(20),
+    Address VARCHAR(255),
+    CreatedDate DATE
+);
+CREATE TABLE Accounts (
+    AccountID INT PRIMARY KEY,
+    CustomerID INT,
+    BranchID INT,
+    AccountType VARCHAR(50),
+    Balance DECIMAL(15, 2),
+    CreatedDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+    FOREIGN KEY (BranchID) REFERENCES Branches(BranchID)
+);
+CREATE TABLE Transactions (
+    TransactionID INT PRIMARY KEY,
+    AccountID INT,
+    Amount DECIMAL(15, 2),
+    TransactionType VARCHAR(50),
+    TransactionDate DATE,
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+CREATE TABLE Loans (
+    LoanID INT PRIMARY KEY,
+    CustomerID INT,
+    Amount DECIMAL(15, 2),
+    InterestRate DECIMAL(5, 2),
+    StartDate DATE,
+    EndDate DATE,
+    ApprovalStatus VARCHAR(50),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    BranchID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Position VARCHAR(50),
+    HireDate DATE,
+    FOREIGN KEY (BranchID) REFERENCES Branches(BranchID)
+);
+CREATE TABLE Branches (
+    BranchID INT PRIMARY KEY,
+    BranchName VARCHAR(100),
+    Address VARCHAR(255),
+    Phone VARCHAR(20)
+);
+CREATE TABLE CreditCards (
+    CreditCardID INT PRIMARY KEY,
+    CustomerID INT,
+    CardNumber VARCHAR(20),
+    ExpiryDate DATE,
+    CreditLimit DECIMAL(15, 2),
+    Balance DECIMAL(15, 2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+CREATE TABLE Deposits (
+    DepositID INT PRIMARY KEY,
+    AccountID INT,
+    Amount DECIMAL(15, 2),
+    StartDate DATE,
+    EndDate DATE,
+    InterestRate DECIMAL(5, 2),
+    FOREIGN KEY (AccountID) REFERENCES Accounts(AccountID)
+);
+CREATE TABLE Payments (
+    PaymentID INT PRIMARY KEY,
+    CustomerID INT,
+    Amount DECIMAL(15, 2),
+    PaymentDate DATE,
+    PaymentMethod VARCHAR(50),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+
