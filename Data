@@ -1,0 +1,57 @@
+INSERT INTO Branches (BranchID, BranchName, Address, Phone)
+VALUES
+(1, 'Main Branch', '123 Main St, Cityville', '123-456-7890'),
+(2, 'North Branch', '456 North St, Cityville', '123-456-7891'),
+(3, 'East Branch', '789 East St, Cityville', '123-456-7892');
+
+INSERT INTO Customers (CustomerID, FirstName, LastName, DateOfBirth, Email, Phone, Address, CreatedDate)
+VALUES
+(1, 'John', 'Doe', '1980-01-15', 'john.doe@example.com', '555-1234', '101 First St, Cityville', '2023-01-01'),
+(2, 'Jane', 'Smith', '1990-02-20', 'jane.smith@example.com', '555-5678', '202 Second St, Cityville', '2023-02-01'),
+(3, 'Michael', 'Johnson', '1975-03-30', 'michael.johnson@example.com', '555-8765', '303 Third St, Cityville', '2023-03-01');
+
+INSERT INTO Employees (EmployeeID, BranchID, FirstName, LastName, Position, HireDate)
+VALUES
+(1, 1, 'Alice', 'Williams', 'Manager', '2022-01-15'),
+(2, 2, 'Bob', 'Brown', 'Teller', '2021-05-20'),
+(3, 3, 'Charlie', 'Davis', 'Security', '2020-10-30');
+
+INSERT INTO Accounts (AccountID, CustomerID, BranchID, AccountType, Balance, CreatedDate)
+VALUES
+(1, 1, 1, 'Savings', 1000.00, '2023-01-02'),
+(2, 1, 1, 'Checking', 1500.00, '2023-01-02'),
+(3, 2, 2, 'Savings', 2000.00, '2023-02-02'),
+(4, 3, 3, 'Checking', 2500.00, '2023-03-02');
+
+INSERT INTO Transactions (TransactionID, AccountID, Amount, TransactionType, TransactionDate)
+VALUES
+(1, 1, 100.00, 'Deposit', '2023-01-05'),
+(2, 1, 50.00, 'Withdrawal', '2023-01-10'),
+(3, 2, 200.00, 'Deposit', '2023-01-15'),
+(4, 3, 300.00, 'Withdrawal', '2023-02-05'),
+(5, 4, 400.00, 'Deposit', '2023-03-05');
+
+INSERT INTO Loans (LoanID, CustomerID, Amount, InterestRate, StartDate, EndDate, ApprovalStatus)
+VALUES
+(1, 1, 5000.00, 3.5, '2023-01-10', '2028-01-10', 'Approved'),
+(2, 2, 10000.00, 4.0, '2023-02-15', '2033-02-15', 'Pending'),
+(3, 3, 15000.00, 4.5, '2023-03-20', '2033-03-20', 'Rejected');
+
+INSERT INTO CreditCards (CreditCardID, CustomerID, CardNumber, ExpiryDate, CreditLimit, Balance)
+VALUES
+(1, 1, '1111-2222-3333-4444', '2025-01-01', 5000.00, 1000.00),
+(2, 2, '5555-6666-7777-8888', '2026-01-01', 10000.00, 2000.00),
+(3, 3, '9999-0000-1111-2222', '2027-01-01', 15000.00, 3000.00);
+
+INSERT INTO Deposits (DepositID, AccountID, Amount, StartDate, EndDate, InterestRate)
+VALUES
+(1, 1, 1000.00, '2023-01-01', '2024-01-01', 2.5),
+(2, 2, 2000.00, '2023-01-01', '2025-01-01', 2.75),
+(3, 3, 3000.00, '2023-02-01', '2026-02-01', 3.0);
+
+INSERT INTO Payments (PaymentID, CustomerID, Amount, PaymentDate, PaymentMethod)
+VALUES
+(1, 1, 150.00, '2023-01-05', 'Credit Card'),
+(2, 2, 250.00, '2023-02-05', 'Debit Card'),
+(3, 3, 350.00, '2023-03-05', 'Bank Transfer');
+
