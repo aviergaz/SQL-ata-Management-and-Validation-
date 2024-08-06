@@ -1,0 +1,36 @@
+/* Validate accont balances*/
+SELECT AccountID, Balance
+FROM Accounts
+WHERE Balance < 0;
+
+/* Verify uniqe email adresses for customers*/
+SELECT Email, COUNT(*) as EmailCount
+FROM Customers
+GROUP BY Email
+HAVING COUNT(*) > 1;
+
+/* Check for orphan records in transactions*/ 
+SELECT TransactionID, AccountID
+FROM Transactions
+WHERE AccountID NOT IN (SELECT AccountID FROM Accounts);
+
+/*Check for orphan records in accounts*/
+SELECT AccountID, CustomerID
+FROM Accounts
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Customers);
+
+/*Check for Orphan Records in Loans*/
+SELECT LoanID, CustomerID
+FROM Loans
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Customers);
+
+/* Check for Orphan Records in Credit Cards  */
+SELECT CreditCardID, CustomerID
+FROM CreditCards
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Customers);
+
+/* */
+
+
+
+
