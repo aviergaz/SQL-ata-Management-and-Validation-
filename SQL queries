@@ -29,7 +29,19 @@ SELECT CreditCardID, CustomerID
 FROM CreditCards
 WHERE CustomerID NOT IN (SELECT CustomerID FROM Customers);
 
-/* */
+/* Check for Duplicate Credit Card Numbers*/
+SELECT CardNumber, COUNT(*) as CardCount
+FROM CreditCards
+GROUP BY CardNumber
+HAVING COUNT(*) > 1;
+
+/*Check for Inactive Customers (customers without any account)*/
+SELECT CustomerID, FirstName, LastName
+FROM Customers
+WHERE CustomerID NOT IN (SELECT DISTINCT CustomerID FROM Accounts);
+
+
+
 
 
 
